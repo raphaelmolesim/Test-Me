@@ -1,0 +1,21 @@
+<h1>Manage Knowledge</h1>
+<p>Here you will be able to see some chunks of questions and answer already uploaded and will be able to upload new chucks as well.</p>
+
+<h2>Groups of question and answer</h2>
+<ul>
+<% @knowledge.each do |k| %>
+	<li><span><%= k.name %></span><span>Delete</span></li>
+<% end %>
+</ul>
+
+<h2>Grow your knowledge</h2>
+<% form_for(:knowledge, :url => "/knowledge/upload" ,:html => {:multipart => true}) do |f| %>
+	<%= f.error_messages %>
+	<p>
+	  <%= f.label :file %><br />
+	  <%= f.file_field :file %>
+	</p>
+	<p>
+	  <%= f.submit "Upload" %>
+	</p>
+<% end %>
