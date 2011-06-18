@@ -13,7 +13,7 @@
 
 <h2>Grow your knowledge</h2>
 
-<%= form_tag({:action => :upload}, :multipart => true) do %>
+<%= form_tag({:action => :upload}, :multipart => true, :id => "upload_form") do %>
  	<p>
 	File: ( <%= link_to "Learn more about the file layout", '/knowledge/file_layout' %> )<br />
 	<%= file_field_tag 'file' %>
@@ -24,3 +24,32 @@
 	</p>
 	<%= submit_tag 'Upload' %>
 <% end %>
+
+
+<script type="text/javascript">
+	
+	function checkRequiredFields() {
+		var ret = true;
+		if ($('name').getValue() == "") { 
+			$('name').addClassName("required");
+			ret = false;
+		} else {
+			$('name').removeClassName("required");
+		}
+		
+		if ($('file').getValue() == "") { 
+			$('file').addClassName("required");
+			ret = false;
+		} else {
+			$('file').removeClassName("required");
+		}
+		
+		return ret;
+	}
+	
+	Event.observe("upload_form", 'submit', function(event) {
+		if (!checkRequiredFields()) {
+			Event.stop(event);
+		}
+	});
+</script>
