@@ -30,4 +30,7 @@ class KnowledgeController < ApplicationController
      @questions = knowledge_ids.collect { |id| Question.find_all_by_knowledge_id(id) }
      @questions.flatten!
   end
+  
+  def file_layout
+  end 
 end

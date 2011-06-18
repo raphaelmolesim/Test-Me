@@ -15,7 +15,7 @@
 
 <%= form_tag({:action => :upload}, :multipart => true) do %>
  	<p>
-	File:<br />
+	File: ( <%= link_to "Learn more about the file layout", '/knowledge/file_layout' %> )<br />
 	<%= file_field_tag 'file' %>
 	</p>
 	<p>

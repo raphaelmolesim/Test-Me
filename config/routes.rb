@@ -1,10 +1,13 @@
 TestMe::Application.routes.draw do
+
+  get "knowledge/manage"
+  get "knowledge/file_layout"
   get "knowledge/select"
   post "knowledge/test"
-  get "knowledge/manage"
+  post "knowledge/upload"
+  
   match 'knowledge/:id' => 'knowledge#show', :via => :get
   match 'knowledge/:id' => 'knowledge#delete', :via => :delete
-  post "knowledge/upload"
   resources :knowledge
   
   get "home/index"
