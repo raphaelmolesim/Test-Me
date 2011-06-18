@@ -1,1 +1,11 @@
-==> This is a sample file of database!!
+Q: Oi!
+A: Cześć! 
+
+Q: Bom Dia.
+A: Dzień dobry. 
+
+Q: Boa Noite.
+A: Dobry wieczór.
+
+Q: Boa Noite.
+A: Dobranoc.

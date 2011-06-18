@@ -1,19 +1,29 @@
-/*
-	Author	:	Christopher Robinson
-	Email		:	christopher@edg3.co.uk
-	Website	:	http://www.edg3.co.uk/
-*/
-* {
-	border:0;
-	margin:0;
-	padding:0;
+#answer_form p {
+	font:2em/100% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+	margin: 30px;
 }
+
+#answer_form textarea.answer {
+	font:2em/100% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+	margin: 0px 30px 30px 30px;
+	width:90%;
+}
+img { margin: 20px; }
+.suggestion { color:#AAA; }
+.required { border-style:solid; border-color:#FF0000; background-color: #FFEEEE; }
+
+li { list-style-type: none; }
+ul { margin-bottom: 15px; }
+li.question { font-weight:bold; }
+li.answer { padding-left: 20px; margin-bottom: 15px; }
+.right { float: right; }
+* { margin:0; padding:0; }
 
 /* body */
 body {
 	background:#fff;
 	color:#666;
-	font:0.75em/100% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+	font:0.95em/100% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 	line-height:1.4em;
 }
 
@@ -59,7 +69,7 @@ a:hover {
 }
 #header_inside ul {
 	float:right;
-	height:100px;
+	height:80px;
 	list-style:none;
 	width:600px;
 }
@@ -105,6 +115,7 @@ a:hover {
 	border-right:1px solid #bbb;
 	margin:0 auto;
 	width:800px;
+	height:450px;
 }
 #content_inside_sidebar {
 	border-left:1px solid #bbb;
@@ -156,9 +167,8 @@ a:hover {
 	padding:0 0 2px;
 }
 #content_inside_main h2 {
-	color:#ccc;
+	color:#333;
 	font-size:115%;
-	text-align:right;
 }
 #content_inside_main p {
 	padding:0 0 10px;
@@ -167,7 +177,6 @@ a:hover {
 /* footer */
 #footer {
 	background:#323232 url('../images/background_footer.jpg') center repeat-y;
-	height:100px;
 	width:100%;
 }
 #footer:after {
@@ -180,12 +189,12 @@ a:hover {
 #footer_inside {
 	border-left:1px solid #bbb;
 	border-right:1px solid #bbb;
-	height:100px;
+	height:50px;
 	margin:0 auto;
 	width:800px;
 }
 #footer_inside p {
 	color:#fff;
-	line-height:100px;
+	line-height:50px;
 	text-align:center;
 }

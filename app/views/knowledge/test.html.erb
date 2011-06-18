@@ -1,2 +1,86 @@
-<h1>Knowledge#test</h1>
-<p>Find me in app/views/knowledge/test.html.erb</p>
+<h1>Testing yourself</h1>
+<form id="answer_form">
+	<p id="question"></p>
+	<textarea id="answer" name="answer" class="answer suggestion">What do think is the translation?
+	</textarea>
+	<input type="hidden" id="json_data" value="<%= parse_to_json(@questions) %>" /><br />
+	<p id="response">
+		<span id="correct_answer"></span>
+		<span id="evaluation" class="right"></span>
+	</p>	
+	<input type="submit" value="Check" />
+</form>
+
+<script type="text/javascript">
+	var json_data = $('json_data').getValue().replace(/'/g, "\"");
+	var hash = new Hash( eval("(" + json_data + ")") );
+	var random_number = raffle_question(hash, null);
+	
+	function raffle_question(hash, except) {
+		do {
+			var index = Math.floor( Math.random() * (hash.keys().length) );
+		} while (index == except);
+		$('question').update(hash.keys()[index]);
+		return index;
+	}
+	
+	Event.observe($('answer'), 'focus', function(event) {
+		if (isAnswerEmpty()) {
+			$('answer').setValue("");
+			$('answer').removeClassName("suggestion");
+		}
+	});
+	
+	function isAnswerEmpty() {
+		var answer = $('answer').getValue();
+		return answer == "" || answer.indexOf("What do think is the translation?") != -1
+	}
+	
+	function checkRequiredFields() {
+		if (isAnswerEmpty()) { 
+			$('answer').addClassName("required");
+			$('answer').update("");
+			return false;
+		}
+		$('answer').removeClassName("required");
+		return true;
+	}
+	
+	function evaluate_answer() {
+		var user_answer = $('answer').getValue();
+		var correct_answer = hash.values()[random_number].first();
+		var matches = 0;
+		
+		for (var i = 0; i <= correct_answer.length; i++) {
+			if (i >= user_answer.length) continue;
+			
+			
+			if (user_answer[i].toLowerCase() == correct_answer[i].toLowerCase())
+				matches++;
+		}
+		
+		
+		
+		$("evaluation").update( Math.floor( (matches/user_answer.length) * 100 ) );
+		$("correct_answer").update(correct_answer);
+	}
+	
+	Event.observe('answer_form', 'submit', function(event) {
+		Event.stop(event);
+		var button = $$('#answer_form > input[type="submit"]').first();
+		
+		if (button.readAttribute("value") == "Check") {
+			if (checkRequiredFields()) {
+				evaluate_answer();
+				button.setAttribute("value", "Next");
+			}
+		} else {
+			random_number = raffle_question(hash, random_number);
+			$('answer').setValue("What do think is the translation?");
+			$('answer').addClassName("suggestion");
+			$("correct_answer").update("");
+			$("evaluation").update("");
+			button.setAttribute("value", "Check");
+		}
+	});
+</script>

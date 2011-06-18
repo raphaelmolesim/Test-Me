@@ -1,0 +1,11 @@
+<h1>What groups would you like test with ?</h1>
+<ul>
+<%= form_tag ('/knowledge/test') do %>
+	<% @knowledge.each do |k| %>
+		<li>
+			<span> <%= check_box_tag "knowledge[#{k.id}]" %> <%= k.name %></span>
+		</li>
+	<% end %>
+	<%= submit_tag "Start test" %>
+<% end %>
+</ul>

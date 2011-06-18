@@ -1,12 +1,13 @@
 TestMe::Application.routes.draw do
-  get "knowledge/test"
-
+  get "knowledge/select"
+  post "knowledge/test"
   get "knowledge/manage"
+  match 'knowledge/:id' => 'knowledge#show', :via => :get
+  match 'knowledge/:id' => 'knowledge#delete', :via => :delete
   post "knowledge/upload"
-  #match 'knowledge' => 'knowledge#upload'
+  resources :knowledge
   
   get "home/index"
-
   devise_for :users
 
   # The priority is based upon order of creation:

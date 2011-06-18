@@ -2,20 +2,25 @@
 <p>Here you will be able to see some chunks of questions and answer already uploaded and will be able to upload new chucks as well.</p>
 
 <h2>Groups of question and answer</h2>
-<ul>
+<ul >
 <% @knowledge.each do |k| %>
-	<li><span><%= k.name %></span><span>Delete</span></li>
+	<li><span><%= link_to k.name, "/knowledge/#{k.id}" %></span>
+		<span class="right"><%= link_to "Delete", { :action => "delete", :id => k.id },
+		          :confirm => "Are you sure?", :method => :delete %></span>
+	</li>
 <% end %>
 </ul>
 
 <h2>Grow your knowledge</h2>
-<% form_for(:knowledge, :url => "/knowledge/upload" ,:html => {:multipart => true}) do |f| %>
-	<%= f.error_messages %>
-	<p>
-	  <%= f.label :file %><br />
-	  <%= f.file_field :file %>
+
+<%= form_tag({:action => :upload}, :multipart => true) do %>
+ 	<p>
+	File:<br />
+	<%= file_field_tag 'file' %>
 	</p>
 	<p>
-	  <%= f.submit "Upload" %>
+	Name:<br />
+  	<%= text_field_tag 'name' %>
 	</p>
+	<%= submit_tag 'Upload' %>
 <% end %>

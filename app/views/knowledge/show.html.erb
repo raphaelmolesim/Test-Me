@@ -1,0 +1,10 @@
+<h1>Group: <%= @knowledge.name %></h1>
+<%= link_to "Back", "/knowledge/manage", :class => "right" %>
+<ul>
+<% @knowledge.questions.each do |question| %>
+	<li class="question"><%= question.description %></li>
+	<% question.answers.each do |answer| %>
+	<li class="answer"><%= answer.description %></li>
+	<% end %>
+<% end %>
+</ul>

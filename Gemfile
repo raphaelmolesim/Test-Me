@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
-gem 'devise', '1.1.rc0'
+gem 'devise', '>=1.1.2' 
 gem 'sqlite3'
 
 # Bundle gems for the local environment. Make sure to
