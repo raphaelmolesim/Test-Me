@@ -4,8 +4,8 @@ A: Cześć!
 Q: Bom Dia.
 A: Dzień dobry. 
 
-Q: Boa Noite.
+Q: Boa Noite (Evening).
 A: Dobry wieczór.
 
-Q: Boa Noite.
+Q: Boa Noite (night).
 A: Dobranoc.
