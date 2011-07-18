@@ -16,6 +16,8 @@ class Knowledge < ActiveRecord::Base
     end
     
     clean_file.split("<breakline>").each do |line|
+    	puts "==> #{line} #{line.start_with?('Q:')}"
+    	
       knowledge.questions << Question.create({ 
         :description => line.gsub("Q:", "").strip, 
         :knowledge_id => knowledge.id}) if line.start_with? "Q:"
