@@ -18,7 +18,7 @@ class KnowledgeController < ApplicationController
       puts ex.message
       puts ex.backtrace.inspect
     end
-    render :action => "show"
+    render :text => "#{file}" # :action => "show"
   end
   
   def show
