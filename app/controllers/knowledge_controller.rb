@@ -7,10 +7,17 @@ class KnowledgeController < ApplicationController
 
   def upload
     file = File.read(params["file"].path)
-    puts file.encoding.name
     file = file.encode("UTF-8")
+    puts file.encoding.name
+    puts file.valid_enconding?
+    puts file
     name = params["name"]
-    @knowledge = Knowledge.create_based_on_file(file, name, current_user.id) 
+    begin
+      @knowledge = Knowledge.create_based_on_file(file, name, current_user.id) 
+    rescue Exception => ex
+      puts ex.message
+      puts ex.backtrace.inspect
+    end
     render :action => "show"
   end
   
