@@ -9,7 +9,7 @@ class KnowledgeController < ApplicationController
     file = File.read(params["file"].path)
     file = file.encode("UTF-8")
     puts file.encoding.name
-    puts file.valid_enconding?
+    #puts file.valid_enconding?
     puts file
     name = params["name"]
     begin
