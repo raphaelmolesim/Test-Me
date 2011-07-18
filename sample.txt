@@ -9,3 +9,6 @@ A: Dobry wieczór.
 
 Q: Boa Noite (night).
 A: Dobranoc.
+
+Q: Ola meu amigo.
+A: Miło óżłąéüęĘą

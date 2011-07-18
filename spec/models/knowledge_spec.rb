@@ -125,7 +125,7 @@ describe Knowledge do
           :description => "Dzien dobry!", :question_id => @question_stub.id 
         })
         Answer.stub!(:create).and_return(@answer_stub)
-        @file = "Q: Bom dia!\n\n\nA: Dzien Dobry!\r\nQ: Bom dia!\nA: Dzien Dobry!"
+        @file = "Q: Bom dia!\n\n\nA: Dzien Dobry!\r\nQ: Bom dia!\rA: Dzien Dobry!"
       end
   
       it "should remove consecutives linebreaks" do

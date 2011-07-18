@@ -7,6 +7,7 @@ class KnowledgeController < ApplicationController
 
   def upload
     file = File.read(params["file"].path)
+    puts file.class
     name = params["name"]
     @knowledge = Knowledge.create_based_on_file(file, name, current_user.id) 
     render :action => "show"
