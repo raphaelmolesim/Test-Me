@@ -17,7 +17,7 @@ class KnowledgeController < ApplicationController
     rescue Exception => ex
       puts ex.message
       puts ex.backtrace.inspect
-      file += ex.message + "ERRO"
+      file = ex.message + "ERRO"
     end
     render :text => "#{file}" # :action => "show"
   end
