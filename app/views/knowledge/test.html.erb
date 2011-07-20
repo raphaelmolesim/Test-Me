@@ -15,6 +15,7 @@
 	var json_data = $('json_data').getValue().replace(/'/g, "\"");
 	var hash = new Hash( eval("(" + json_data + ")") );
 	var random_number = raffle_question(hash, null);
+	var evaluator = new StringEvaluator();
 	
 	function raffle_question(hash, except) {
 		do {
@@ -49,19 +50,8 @@
 	function evaluate_answer() {
 		var user_answer = $('answer').getValue();
 		var correct_answer = hash.values()[random_number].first();
-		var matches = 0;
-		
-		for (var i = 0; i < correct_answer.length; i++) {
-			if (i >= user_answer.length) continue;
-			
-			
-			if (user_answer[i].toLowerCase() == correct_answer[i].toLowerCase())
-				matches++;
-		}
-		
-		
-		
-		$("evaluation").update( Math.floor( (matches/user_answer.length) * 100 ) );
+		var evaluation = evaluator.evaluate(user_answer, correct_answer);		
+		$("evaluation").update(evaluation);
 		$("correct_answer").update(correct_answer);
 	}
 	
