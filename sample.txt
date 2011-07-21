@@ -1,14 +1,11 @@
-Q: Oi!
-A: Cześć! 
+Q: Oi
+A: Cześć
 
-Q: Bom Dia.
-A: Dzień dobry. 
+Q: Bom Dia
+A: Dzień dobry
 
-Q: Boa Noite (Evening).
-A: Dobry wieczór.
+Q: Boa Noite (Evening)
+A: Dobry wieczór
 
-Q: Boa Noite (night).
-A: Dobranoc.
-
-Q: Ola meu amigo.
-A: Miło óżłąéüęĘą
+Q: Boa Noite (night)
+A: Dobranoc

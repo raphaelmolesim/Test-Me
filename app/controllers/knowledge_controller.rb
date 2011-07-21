@@ -33,6 +33,20 @@ class KnowledgeController < ApplicationController
      @questions.flatten!
   end
   
-  def file_layout
+  def get_sound
+    apiKey = 'db78d86b01b3e7bb321c349e96252f58'
+    word = params['word'].gsub("!", "").gsub(".", "").gsub("?", "")
+    url = "http://apifree.forvo.com/key/#{apiKey}/format/xml/action/standard-pronunciation/word/#{}"
+    puts "==>#{url}"
+    require 'net/https'
+    require 'open-uri'
+    uri = URI.parse(URI.encode(url))
+    http = Net::HTTP.new(uri.host, uri.port)
+    response = http.start { |request| request.get(url) }
+    require "rexml/document"
+    puts response.body
+    xmlDoc = REXML::Document.new response.body
+    
+    render :text => xmlDoc.elements['//pathmp3'].first;
   end 
 end

@@ -2,10 +2,11 @@ TestMe::Application.routes.draw do
 
   get "knowledge/manage"
   get "knowledge/file_layout"
-  get "knowledge/select"
+  get "knowledge/select"  
   post "knowledge/test"
   post "knowledge/upload"
   
+  match "knowledge/get_sound/:word" => 'knowledge#get_sound', :via => :get, :permalink => /(.|\s)+/
   match 'knowledge/:id' => 'knowledge#show', :via => :get
   match 'knowledge/:id' => 'knowledge#delete', :via => :delete
   resources :knowledge

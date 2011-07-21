@@ -7,9 +7,12 @@
 	<p id="response">
 		<span id="correct_answer"></span>
 		<span id="evaluation" class="right"></span>
-	</p>	
+	</p>
+	<div style="display:block;" id="sound_element"></div>	
 	<input type="submit" value="Check" />
 </form>
+
+<input id="playSound" type="submit" value="Listen" />
 
 <script type="text/javascript">
 	var json_data = $('json_data').getValue().replace(/'/g, "\"");
@@ -54,6 +57,23 @@
 		$("evaluation").update(evaluation);
 		$("correct_answer").update(correct_answer);
 	}
+	
+	function playSound() {
+		var word = hash.values()[random_number].first();
+		var url = encodeURI("/knowledge/get_sound/" + word);
+		new Ajax.Request(url, {
+			method: 'get',
+			onSuccess: function(transport) {
+				var sound = transport.responseText;
+				$('sound_element').update("<embed src='" + sound + "' hidden='true' " + 
+					"autostart='true' loop='false' />");
+		    }
+		});
+	}
+	
+	Event.observe('playSound', 'click', function(event) {
+		playSound();
+	});
 	
 	Event.observe('answer_form', 'submit', function(event) {
 		Event.stop(event);
